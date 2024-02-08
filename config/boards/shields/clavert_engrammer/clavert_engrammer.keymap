@@ -144,11 +144,11 @@
         // | trans | none | none  | none  | none  | none | trans | trans |  | trans | trans | none  | 1       | 2   | 3   | ENTER | none |
         // | trans | none | trans | trans | trans        | trans | trans |  | trans | trans | trans           | 0   | .   | ENTER | none |
                   bindings = <
-        &none       &none       &kp D       &kp E       &kp F       &none                                                         &kp CARET   &kp HASH    &kp DLLR    &kp TILDE   &kp MINUS   &kp PIPE
-        &caps_word  &kp X       &kp A       &kp B       &kp C       &kp UNDER       &trans                              &trans    &kp PRCNT   &kp N7      &kp N8      &kp N9      &kp COLON    &kp K
-        &kp KP_NUM  &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &kp TAB         &none                               &none     &kp PLUS    &kp N4      &kp N5      &kp N6      &kp MINUS    &kp J
-        &none       &sk LSHFT   &kp K_UNDO  &kp BSPC    &kp SPACE   &kp RET         &trans    &trans    &trans  &trans  &none     &kp STAR   &kp N1      &kp N2      &kp N3       &kp FSLH   &kp LS(G)
-        &trans      &none       &kp K_REDO  &kp DEL                 &tog NUM_LAYER  &trans    &trans    &trans  &trans  &trans                            &kp N0      &kp DOT     &kp ENTER   &kp AT
+        &none       &none       &kp D       &kp E       &kp F       &none                                               &kp CARET &kp HASH    &kp DLLR    &kp TILDE   &kp MINUS   &kp PIPE
+        &caps_word  &kp X       &kp A       &kp B       &kp C       &kp UNDER       &trans                      &trans  &kp PRCNT &kp N7      &kp N8      &kp N9      &kp COLON   &kp K
+        &kp KP_NUM  &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &kp TAB         &none                       &none   &kp PLUS  &kp N4      &kp N5      &kp N6      &kp MINUS   &kp J
+        &none       &sk LSHFT   &kp K_UNDO  &kp BSPC    &kp SPACE   &kp RET         &trans    &trans    &trans  &none   &kp STAR  &kp N1      &kp N2      &kp N3      &kp FSLH    &kp LS(G)
+        &trans      &none       &kp K_REDO  &kp DEL                 &tog NUM_LAYER  &trans    &trans    &trans  &trans  &trans                &kp N0      &kp DOT     &kp ENTER   &kp AT
         >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
       };
