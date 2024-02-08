@@ -146,9 +146,9 @@
                   bindings = <
         &none       &none       &kp D       &kp E       &kp F       &none                                                   &kp CARET   &kp HASH    &kp DLLR    &kp TILDE   &kp MINUS   &kp PIPE
         &caps_word  &kp X       &kp A       &kp B       &kp C       &kp UNDER   &trans                              &trans  &kp PRCNT   &kp N7      &kp N8      &kp N9      &kp PLUS    &kp K
-        &kp KP_NUM  &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &none       &none                               &none   &kp PLUS    &kp N4      &kp N5      &kp N6      &kp PLUS    &kp J
-        &none       &sk LSHFT   &kp K_UNDO  &kp BSPC    &kp SPACE   &kp TAB     &trans    &tog NUM_LAYER    &trans  &trans  &kp STAR    &kp N1      &kp N2      &kp N3      &kp ENTER   &kp LS(G)
-        &trans      &none       &kp K_REDO  &kp DEL                 &kp RET     &trans    &trans            &trans  &trans  &trans                  &kp N0      &kp DOT     &kp ENTER   &kp AT
+        &kp KP_NUM  &kp LGUI    &kp LALT    &kp LCTRL   &kp LSHFT   &kp TAB       &none                               &none   &kp PLUS    &kp N4      &kp N5      &kp N6      &kp PLUS    &kp J
+        &none       &sk LSHFT   &kp K_UNDO  &kp BSPC    &kp SPACE   &kp RET     &trans    &trans    &trans  &trans  &kp STAR    &kp N1      &kp N2      &kp N3      &kp ENTER   &kp LS(G)
+        &trans      &none       &kp K_REDO  &kp DEL                 &tog NUM_LAYER         &trans    &trans            &trans  &trans  &trans                  &kp N0      &kp DOT     &kp ENTER   &kp AT
         >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
       };
@@ -177,7 +177,7 @@
           &none  &sk LSHFT  &kp K_REDO  &kp K_UNDO  &kp BSPC    &kp K_CUT       &none                   &none  &kp K_CUT   &kp BSPC &kp K_UNDO  &kp K_REDO  &sk LSHFT   &none
           &none  &kp LGUI   &kp LALT    &kp LCTRL   &kp LSHFT   &kp K_COPY      &none                   &none  &kp K_COPY  &kp LEFT &kp UP      &kp DOWN    &kp RIGHT   &none
           &none  &none      &none       &none       &none       &kp K_PASTE     &kp TAB   &none  &none  &none  &kp K_PASTE &kp HOME &kp PG_UP   &kp PG_DN   &kp END     &none
-          &none  &none      &none       &none                   &tog CRS_LAYER  &none     &none  &none  &none  &tog CRS_LAYER       &kp K_FIND  &none       &none       &none
+          &none  &none      &none       &none                   &tog CUR_LAYER  &none     &none  &none  &none  &tog CUR_LAYER       &kp K_FIND  &none       &none       &none
         >;
         sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
       };
@@ -214,7 +214,7 @@
           &none       &kp C_PWR  &kp C_SLEEP &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
           &none       &kp K_PWR  &kp K_SLEEP &none &none  &none    &none                &none   &none  &kp RSHFT &kp RCTRL  &kp RALT  &kp RGUI   &none
           &none       &bt_0      &bt_1       &bt_2 &bt_3  &none    &none  &none  &none  &none   &none  &none     &none      &none     &none      &none
-          &none       &none      &none       &none        &none    &none  &none  &none  &none   &tog SYM_LAYER   &none      &none     &none      &none
+          &none       &none      &none       &none        &none    &none  &none  &none  &none   &tog SYS_LAYER   &none      &none     &none      &none
         >;
         sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
       };
