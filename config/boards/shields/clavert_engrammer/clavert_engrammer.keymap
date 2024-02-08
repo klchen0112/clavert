@@ -196,7 +196,7 @@
     // wait for mouse support
      mouse_layer {
         bindings = <
-          &none     &kp GRAVE &kp LPAR   &kp RPAR   &kp SEMI  &kp COMMA                                &none   &none      &none        &none     &none     &none     &none
+          &none     &kp GRAVE &kp LPAR   &kp RPAR   &kp SEMI  &kp COMMA                                        &none      &none      &none        &none     &none     &none
           &kp EXCL  &kp LBRC  &kp SQT    &kp DQT    &kp RBRC  &kp QMARK  &kp COLON                     &trans  &none      &kp RSHFT  &kp RCTRL    &kp RALT  &kp RGUI  &none
           &kp HASH  &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR  &kp STAR   &kp SEMI                      &trans  &none      &kp BSPC   &kp TAB      &kp SPACE &kp RET   &none
           &kp TILDE &kp LT    &kp PIPE   &kp MINUS  &kp GT    &kp FSLH   &kp BSLH    &kp DOT    &none  &trans  &none      &kp DEL    &kp LS(TAB)  &none     &none     &none
@@ -207,11 +207,11 @@
 
      layer_system {
         bindings = <
-          &bt BT_CLR  &none      &none       &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
-          &none       &kp C_PWR  &kp C_SLEEP &none &none  &none    &none                &none   &none  &kp RSHFT &kp RCTRL  &kp RALT  &kp RGUI   &none
-          &none       &kp K_PWR  &kp K_SLEEP &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
-          &none       &bt1       &bt2         &bt3 &bt4   &none    &none  &none  &none  &none   &none  &none     &none      &none     &none      &none
-          &none       &none      &none       &none &tog SYM_LAYER  &none  &none  &none  &none   &tog SYM_LAYER   &none      &none     &none      &none
+          &bt BT_CLR  &none      &none       &none &none  &none                                 &none  &none     &none      &none     &none      &none
+          &none       &kp C_PWR  &kp C_SLEEP &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
+          &none       &kp K_PWR  &kp K_SLEEP &none &none  &none    &none                &none   &none  &kp RSHFT &kp RCTRL  &kp RALT  &kp RGUI   &none
+          &none       &bt1       &bt2        &bt3  &bt4   &none    &none  &none  &none  &none   &none  &none     &none      &none     &none      &none
+          &none       &none      &none       &none        &none    &none  &none  &none  &none   &tog SYM_LAYER   &none      &none     &none      &none
         >;
         sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
       };
