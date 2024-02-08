@@ -6,6 +6,7 @@
   */
 
   #include <behaviors.dtsi>
+  #include <dt-bindings/zmk/outputs.h>
   #include <dt-bindings/zmk/keys.h>
   #include <dt-bindings/zmk/bt.h>
   #include <dt-bindings/zmk/ext_power.h>
@@ -30,9 +31,6 @@
             N1 N2 N3 N4 N5 N6 N7 N8 N9 N0
     >;
   };
-  &sl {
-    release-after-ms = <2000>;
-  };
   / {
     behaviors {
       hm: homerow_mods {
@@ -50,6 +48,69 @@
           #binding-cells = <2>;
           bindings = <&kp>, <&caps_word>;
       };
+
+      bt_0: bt_0 {
+            compatible = "zmk,behavior-tap-dance";
+            label = "BT_0";
+            #binding-cells = <0>;
+            tapping-term-ms = <200>;
+            bindings = <&bt_select_0>, <&bt BT_DISC 0>;
+      };
+      bt_1: bt_1 {
+          compatible = "zmk,behavior-tap-dance";
+          label = "BT_1";
+          #binding-cells = <0>;
+          tapping-term-ms = <200>;
+          bindings = <&bt_select_1>, <&bt BT_DISC 1>;
+      };
+      bt_2: bt_2 {
+          compatible = "zmk,behavior-tap-dance";
+          label = "BT_2";
+          #binding-cells = <0>;
+          tapping-term-ms = <200>;
+          bindings = <&bt_select_2>, <&bt BT_DISC 2>;
+      };
+      bt_3: bt_3 {
+          compatible = "zmk,behavior-tap-dance";
+          label = "BT_3";
+          #binding-cells = <0>;
+          tapping-term-ms = <200>;
+          bindings = <&bt_select_3>, <&bt BT_DISC 3>;
+      };
+    };
+    macros {
+        bt_select_0: bt_select_0 {
+            label = "BT_SELECT_0";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>,
+                  <&bt BT_SEL 0>;
+        };
+        bt_select_1: bt_select_1 {
+            label = "BT_SELECT_1";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>,
+                  <&bt BT_SEL 1>;
+        };
+        bt_select_2: bt_select_2 {
+            label = "BT_SELECT_2";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>,
+                  <&bt BT_SEL 2>;
+        };
+        bt_select_3: bt_select_3 {
+            label = "BT_SELECT_3";
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings
+                = <&out OUT_BLE>,
+                  <&bt BT_SEL 3>;
+        };
     };
   };
   / {
@@ -122,7 +183,6 @@
 
     symbol_layer {
        bindings = <
-          &none     &none     &none      &none     &none      &none                                             &none   &none      &none        &none     &none     &none
           &none     &kp GRAVE &kp LPAR   &kp RPAR   &kp SEMI  &kp COMMA                                         &none   &none      &none        &none     &none     &none
           &kp EXCL  &kp LBRC  &kp SQT    &kp DQT    &kp RBRC  &kp QMARK  &kp COLON                      &none   &trans  &kp RSHFT  &kp RCTRL    &kp RALT  &kp RGUI  &none
           &kp HASH  &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR  &kp STAR   &kp SEMI                       &none   &trans  &kp BSPC   &kp TAB      &kp SPACE &kp RET   &none
@@ -136,7 +196,6 @@
     // wait for mouse support
      mouse_layer {
         bindings = <
-          &none     &none     &none      &none      &none                                                      &none      &none        &none     &none     &none     &none
           &none     &kp GRAVE &kp LPAR   &kp RPAR   &kp SEMI  &kp COMMA                                &none   &none      &none        &none     &none     &none     &none
           &kp EXCL  &kp LBRC  &kp SQT    &kp DQT    &kp RBRC  &kp QMARK  &kp COLON                     &trans  &none      &kp RSHFT  &kp RCTRL    &kp RALT  &kp RGUI  &none
           &kp HASH  &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR  &kp STAR   &kp SEMI                      &trans  &none      &kp BSPC   &kp TAB      &kp SPACE &kp RET   &none
@@ -148,12 +207,11 @@
 
      layer_system {
         bindings = <
-          &none  &none      &none       &none &none  &none                                 &none  &none     &none      &none     &none      &none
-          &none  &none      &none       &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
-          &none  &kp C_PWR  &kp C_SLEEP &none &none  &none    &none                &none   &none  &kp RSHFT &kp RCTRL  &kp RALT  &kp RGUI   &none
-          &none  &kp K_PWR  &kp K_SLEEP &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
-          &none  &none      &none       &none &none  &none    &none  &none  &none  &none   &none  &none     &none      &none     &none      &none
-          &none  &none      &none       &none &tog SYM_LAYER  &none  &none  &none  &none   &tog SYM_LAYER   &none      &none     &none      &none
+          &bt BT_CLR  &none      &none       &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
+          &none       &kp C_PWR  &kp C_SLEEP &none &none  &none    &none                &none   &none  &kp RSHFT &kp RCTRL  &kp RALT  &kp RGUI   &none
+          &none       &kp K_PWR  &kp K_SLEEP &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
+          &none       &bt1       &bt2         &bt3 &bt4   &none    &none  &none  &none  &none   &none  &none     &none      &none     &none      &none
+          &none       &none      &none       &none &tog SYM_LAYER  &none  &none  &none  &none   &tog SYM_LAYER   &none      &none     &none      &none
         >;
         sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
       };
