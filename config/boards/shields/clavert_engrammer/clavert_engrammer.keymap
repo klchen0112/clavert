@@ -129,7 +129,7 @@
           &kp GRAVE         &kp B      &kp Y       &kp O       &kp U       &kp SQT    &kp ESC                                                         &kp ESC               &kp SEMI  &kp L       &kp D       &kp W    &kp V     &kp Z
           &cappy CAPSLOCK 0 &hm LGUI C &hm LALT I  &hm LCTRL E &hm LSHFT A &kp COMMA  &kp LS(LALT)                                                    &kp BSLH              &kp DOT   &hm RSHFT H &hm RCTRL T &kp S    &kp N     &kp Q
           &kp LSHFT         &kp G      &kp X       &kp J       &kp K       &kp MINUS  &lt CUR_LAYER ESC     &lt FUN_LAYER HOME  &lt FUN_LAYER PG_UP   &lt MOS_LAYER DEL     &kp FSLH  &kp R       &kp M       &kp F    &kp P     &sk RSHFT
-          &kp LEFT          &kp RIGHT  &kp LALT    &kp LGUI                &kp TAB    &lt NUM_LAYER BSPC    &kp END             &lt SYS_LAYER PG_DN   &lt SYM_LAYER ENTER   &kp DEL               &kp LBKT    &kp RBKT &kp UP    &kp DOWN
+          &kp LEFT          &kp RIGHT  &kp LALT    &kp LGUI                &kp TAB    &lt NUM_LAYER BSPC    &kp END             &lt SYS_LAYER PG_DN   &lt SYM_LAYER SPACE   &kp ENTER             &kp LBKT    &kp RBKT &kp UP    &kp DOWN
         >;
 
         sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
@@ -153,13 +153,13 @@
             sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
       };
 
-  function_layer {
-// --------------------------------------------------------------------------------------------------------------------------------------------------
-// | none  | F1   | F2    | F3    | F4    | F5         |                                  | F6         | F7     | F8     | F9      | F10  | F11  |
-// | trans | none | {     | }     | none  | none       | trans |                  | trans | none       | BT_CLR | BT_PRV | BT_NXT  | none | F12  |
-// | trans | none | (     | )     | none  | reset      | none  |                  | none  | reset      | none   | none   | none    | none | PLAY |
-// | trans | none | [     | ]     | none  | bootloader | trans | trans |  | trans | trans | bootloader | none   | none   | none    | none | none |
-// | trans | none | trans | trans | trans              | trans | trans |  | trans | trans | trans               | REWIND | FASTFWR | none | none |
+    function_layer {
+  // --------------------------------------------------------------------------------------------------------------------------------------------------
+  // | none  | F1   | F2    | F3    | F4    | F5         |                                  | F6         | F7     | F8     | F9      | F10  | F11  |
+  // | trans | none | {     | }     | none  | none       | trans |                  | trans | none       | BT_CLR | BT_PRV | BT_NXT  | none | F12  |
+  // | trans | none | (     | )     | none  | reset      | none  |                  | none  | reset      | none   | none   | none    | none | PLAY |
+  // | trans | none | [     | ]     | none  | bootloader | trans | trans |  | trans | trans | bootloader | none   | none   | none    | none | none |
+  // | trans | none | trans | trans | trans              | trans | trans |  | trans | trans | trans               | REWIND | FASTFWR | none | none |
           bindings = <
               &trans  &none  &none  &none   &none   &none                                                     &kp C_MEDIA_HOME  &kp C_PLAY    &kp C_PREV    &kp C_NEXT  &kp C_STOP    &kp C_EJECT
               &trans  &none  &none  &none   &none   &none           &sys_reset                  &sys_reset    &kp K_WWW         &kp F7        &kp F8        &kp F9      &kp F10       &kp F13
