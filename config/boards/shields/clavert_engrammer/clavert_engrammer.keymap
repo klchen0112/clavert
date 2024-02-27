@@ -178,7 +178,7 @@
           &none  &none      &none       &none       &none       &kp K_PASTE     &kp TAB   &none  &none  &none  &kp K_PASTE &kp HOME &kp PG_UP   &kp PG_DN   &kp END     &none
           &none  &none      &none       &none                   &tog CUR_LAYER  &none     &none  &none  &none  &tog CUR_LAYER       &kp K_FIND  &none       &none       &none
         >;
-        sensor-bindings = <&inc_dec_kp PG_UP PG_DN>;
+        sensor-bindings = <&inc_dec_kp UP DOWN>;
       };
 
 
@@ -204,7 +204,7 @@
           &none  &none      &none       &none       &none   &none       &mkp MB4  &mkp MB5    &none &trans  &none      &kp DEL    &kp LS(TAB)  &none     &none     &none
           &none  &none      &none       &none               &mkp LCLK   &mkp MCLK &mkp RCLK   &none &none   &tog MOS_LAYER        &trans       &none     &none     &none
         >;
-        sensor-bindings = <&inc_dec_kp LEFT RIGHT>;
+        sensor-bindings = <&inc_dec_kp UP DOWN>;
       };
 
      system_layer {
