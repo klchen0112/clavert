@@ -43,11 +43,11 @@
               bindings = <&kp>, <&kp>;
           };
       cappy: capsword_and_capslock {
-          compatible = "zmk,behavior-hold-tap";
-          flavor = "tap-preferred";
-          tapping-term-ms = <500>;
-          #binding-cells = <2>;
-          bindings = <&kp>, <&caps_word>;
+        compatible = "zmk,behavior-mod-morph";
+        label = "CAPSWORD_AND_CAPSLOCK";
+        #binding-cells = <0>;
+        bindings = <&caps_word>, <&kp CAPSLOCK>;
+        mods = <(MOD_LSFT|MOD_RSFT)>;
       };
 
       bt_0: bt_0 {
@@ -127,7 +127,7 @@
                   bindings = <
           &kp EQUAL         &kp N1     &kp N2      &kp N3      &kp N4      &kp N5                                                                                           &kp N6    &kp N7      &kp N8      &kp N9      &kp N0      &kp BSLH
           &kp GRAVE         &kp B      &kp Y       &kp O       &kp U       &kp SQT    &kp ESC                                                         &kp ESC               &kp SEMI  &kp L       &kp D       &kp W       &kp V       &kp Z
-          &cappy CAPSLOCK 0 &hm LGUI C &hm LALT I  &hm LCTRL E &hm LSHFT A &kp COMMA  &kp LS(LALT)                                                    &kp BSLH              &kp DOT   &hm RSHFT H &hm RCTRL T &hm RALT S  &hm RGUI N  &kp Q
+          &cappy            &hm LGUI C &hm LALT I  &hm LCTRL E &hm LSHFT A &kp COMMA  &kp LS(LALT)                                                    &kp BSLH              &kp DOT   &hm RSHFT H &hm RCTRL T &hm RALT S  &hm RGUI N  &kp Q
           &kp LSHFT         &kp G      &kp X       &kp J       &kp K       &kp MINUS  &lt CUR_LAYER ESC     &lt FUN_LAYER HOME  &lt FUN_LAYER PG_UP   &lt MOS_LAYER DEL     &kp FSLH  &kp R       &kp M       &kp F       &kp P       &sk RSHFT
           &kp LEFT          &kp RIGHT  &kp LALT    &kp LGUI                &kp TAB    &lt NUM_LAYER SPACE   &kp END             &lt SYS_LAYER PG_DN   &lt SYM_LAYER BSPC    &kp ENTER             &kp LBKT    &kp RBKT    &kp UP      &kp DOWN
         >;
