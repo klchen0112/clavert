@@ -1,0 +1,12 @@
+file_format: "1"
+id: clavert_qwerty
+name: clavert_qwerty
+type: shield
+url: https://github.com/klchen0112/clavert
+requires: [pro_micro]
+features:
+  - keys
+  - encoder
+siblings:
+  - clavert_qwerty_left
+  - clavert_qwerty_right
