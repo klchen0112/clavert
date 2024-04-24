@@ -14,7 +14,7 @@
   #include "zmk-helpers/helper.h"
 
   #include "mouse.dtsi"
-
+  #include "clavert_keys.h"
   #define DEF 0
   #define NUM 1
   #define FUN 2
