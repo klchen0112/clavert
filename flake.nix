@@ -22,7 +22,7 @@
         board = "nice_nano_v2";
         shield = "clavert_engrammer_%PART%";
 
-        zephyrDepsHash = "sha256-n7xX/d8RLqDyPOX4AEo5hl/3tQtY6mZ6s8emYYtOYOg=";
+        zephyrDepsHash = "sha256-ZLjAjMwXMvbaYXt9jOV0+2e2NjZuIZIq1zR2zegmw9A=";
 
         meta = {
           description = "ZMK firmware";
