@@ -79,3 +79,18 @@
 #define RB2  53
 #define RB3  54
 #define RB4  55
+
+
+
+#define LH0  60
+#define LH1  59
+#define LH2  58
+#define LH3  57
+#define LH4  56
+
+
+#define RH0  65  // right thumb key row (mirrored from LB)
+#define RH1  66
+#define RH2  67
+#define RH3  68
+#define RH4  69
