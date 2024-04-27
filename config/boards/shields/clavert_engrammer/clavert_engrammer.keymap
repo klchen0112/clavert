@@ -129,9 +129,9 @@ ZMK_TAP_DANCE(num_dance,
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
 };
 
-// smart-MOS, requires PR #1366
-ZMK_TRI_STATE(smart_MOS,
-    bindings = <&tog MOS>, <XXX  >, <&tog MOS>;
+// smart-mouse, requires PR #1366
+ZMK_TRI_STATE(smart_mouse,
+    bindings = <&tog MOS>, <&none>, <&tog MOS>;
     ignored-key-positions = <LT1 LT3 RT0 RT1 RT2 RT3 RT4 RM1 RM2 RM3 RB1 RB2 RB3 RH0 RH1>;
     ignored-layers = <MOS>;
 )
