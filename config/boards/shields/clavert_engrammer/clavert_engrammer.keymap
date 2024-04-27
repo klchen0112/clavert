@@ -9,26 +9,24 @@
 #include <dt-bindings/zmk/keys.h>
 
 #include <dt-bindings/zmk/bt.h>
-#define _BT_SEL_KEYS_ &bt BT_SEL 0 &bt BT_SEL 1 &bt BT_SEL 2 &bt BT_SEL 3 &bt BT_CLR
+
 
 #include "zmk-helpers/helper.h"
 
-#include "mouse.dtsi"
+#include "MOS.dtsi"
 #include "clavert_keys.h"
 
 #define DEF 0
+#define NUM 1
 #define FN 2
-#define CUR 3
-#define SYM 4
-#define SYS 6
+#define SYM 3
+#define MOS 4
+#define SYS 5
 
-#define NAV 1
-#define NUM 3
-#define UC 5
-#define MOUSE 6
 
-#define XXX &none
-#define ___ &trans
+
+#define XXX XXX
+#define ___ ___
 
 
 
@@ -103,7 +101,7 @@ ZMK_HOLD_TAP(mt_end,  bindings = <&masked_end>, <&kp>; MT_CORE)
 MASK_MODS(masked_home, (MOD_LCTL), &kp HOME)
 MASK_MODS(masked_end,  (MOD_LCTL), &kp END)
 
-/* Caps-word, num-word and smart-mouse */
+/* Caps-word, num-word and smart-MOS */
 
 // tap: sticky-shift | shift + tap/ double-tap: caps-word | hold: shift
 ZMK_MOD_MORPH(smart_shft,
@@ -131,11 +129,11 @@ ZMK_TAP_DANCE(num_dance,
     continue-list = <BSPC DEL DOT COMMA PLUS MINUS STAR FSLH EQUAL>;
 };
 
-// smart-mouse, requires PR #1366
-ZMK_TRI_STATE(smart_mouse,
-    bindings = <&tog MOUSE>, <&none>, <&tog MOUSE>;
+// smart-MOS, requires PR #1366
+ZMK_TRI_STATE(smart_MOS,
+    bindings = <&tog MOS>, <XXX  >, <&tog MOS>;
     ignored-key-positions = <LT1 LT3 RT0 RT1 RT2 RT3 RT4 RM1 RM2 RM3 RB1 RB2 RB3 RH0 RH1>;
-    ignored-layers = <MOUSE>;
+    ignored-layers = <MOS>;
 )
 
 /* Custom behaviors */
@@ -217,7 +215,7 @@ ZMK_MACRO(win_sleep,
 )
 
 // misc aliases
-#define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-mouse
+#define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-MOS
 #define DSK_PREV    &hmr LALT LG(LC(LEFT))   // previous desktop
 #define DSK_NEXT    &hmr LCTRL LG(LC(RIGHT)) // next     desktop
 #define PIN_WIN     &kp LG(LC(LS(Q)))        // pin window across desktops
@@ -235,116 +233,102 @@ ZMK_LAYER_3(DEF,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     &kp GRAVE     &kp B         &kp Y         &kp O         &kp U         &kp SQT       &kp ESC                                      &kp ESC       &kp SEMI      &kp L         &kp D         &kp W         &kp V         &kp Z
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           &kp C         &kp I         &kp E         &kp A         &kp COMMA     &lt SYS FSLH                                 &lt SYS BSLH  &kp DOT       &kp H   &kp T   &kp S    &kp N    &kp Q
+    &smart_shft   &hml LGUI C   &hml LALT I   &hml LCTRL E  &hml LSHFT A  &kp COMMA     &lt SYS FSLH                                 &lt SYS BSLH  &kp DOT       &hmr RSHFT H  &hmr RCTRL T  &hmr RALT S   &hmr RGUI N   &kp Q
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LSHFT     &kp G         &kp X         &kp J         &kp K         &kp MINUS     &lt CUR HOME &lt FN END      &lt FN PG_UP  &lt MOUSSE PG_DN &kp FSLH      &kp R         &kp M         &kp F         &kp P         &kp RSHFT
+    &kp LSHFT     &kp G         &kp X         &kp J         &kp K         &kp MINUS     &lt NAV HOME  &lt FN END      &lt FN PG_UP   &lt MOS PG_DN &kp FSLH      &kp R         &kp M        &kp F         &kp P          &kp RSHFT
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp LEFT      &kp RIGHT     &kp LGUI      &kp LALT                    &mt LGUI TAB  &kp LCTRL     &lt NUM ESC     &lt SYM ENTER  &kp SPACE    &mt RSHFT BSPC               &kp LBKT      &kp RBKT      &kp UP        &kp DOWN
+    &kp LEFT      &kp RIGHT     &kp LGUI      &kp LALT                    &kp TAB       &kp LCTRL     &lt NUM ESC     &lt SYM ENTER  &kp SPACE     &kp BSPC                    &kp LBKT      &kp RBKT      &kp UP        &kp DOWN
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
   ,&inc_dec_kp LEFT RIGHT
 )
 
 
-ZMK_LAYER_3(NUM,
-//╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           XXX           XXX           XXX           XXX           XXX                                                                   &kp CARET &kp HASH    &kp DLLR    &kp TILDE   &kp MINUS   &kp PIPE
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX           XXX           XXX                                          &trans  &kp PRCNT &kp N7      &kp N8      &kp N9      &kp COLON   &kp K
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp KP_NUM    &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     &kp TAB       &none                                        &none       &kp PLUS  &kp N4      &kp N5      &kp N6      &kp MINUS   &kp J
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-            &none       &sk LSHFT   &kp K_UNDO  &kp BSPC    &kp SPACE   &kp RET         &trans    &trans    &trans  &none   &kp STAR  &kp N1      &kp N2      &kp N3      &kp FSLH    &kp LS(G)
-//├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans      &none       &kp K_REDO  &kp DEL                 &tog NUM  &trans    &trans    &trans  &trans  &trans                &kp N0      &kp DOT     &kp ENTER   &kp AT
-//╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
-,&inc_dec_kp PG_UP PG_DN)
-
 
 ZMK_LAYER_3(NUM,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    XXX           XXX           XXX           XXX           XXX           XXX                                                                   &kp CARET &kp HASH    &kp DLLR    &kp TILDE   &kp MINUS   &kp PIPE
+    XXX           XXX           XXX           XXX           XXX           XXX                                                                      &kp CARET     &kp HASH      &kp DLLR      &kp TILDE     &kp MINUS     &kp PIPE
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX           XXX           XXX                                          &trans  &kp PRCNT &kp N7      &kp N8      &kp N9      &kp COLON   &kp K
+    XXX           XXX           XXX           XXX           XXX           XXX           XXX                                          ___           &kp PRCNT     &kp N7        &kp N8        &kp N9        &kp COLON     &kp K
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp KP_NUM    &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     &kp TAB       &none                                        &none       &kp PLUS  &kp N4      &kp N5      &kp N6      &kp MINUS   &kp J
+    &kp KP_NUM    &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     &kp TAB       XXX                                          XXX           &kp PLUS      &kp N4        &kp N5        &kp N6        &kp MINUS     &kp J
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-            &none       &sk LSHFT   &kp K_UNDO  &kp BSPC    &kp SPACE   &kp RET         &trans    &trans    &trans  &none   &kp STAR  &kp N1      &kp N2      &kp N3      &kp FSLH    &kp LS(G)
+    XXX           &sk LSHFT     &kp K_UNDO    &kp BSPC      &kp SPACE     &kp RET       ___           ___              ___           XXX           &kp STAR      &kp N1        &kp N2        &kp N3        &kp FSLH      &kp LS(G)
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans      &none       &kp K_REDO  &kp DEL                 &tog NUM  &trans    &trans    &trans  &trans  &trans                &kp N0      &kp DOT     &kp ENTER   &kp AT
+    ___           XXX           &kp K_REDO    &kp DEL                     &tog NUM      ___           ___              ___           ___           ___                         &kp N0        &kp DOT       &kp ENTER     &kp AT
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 ,&inc_dec_kp PG_UP PG_DN)
 
 
 ZMK_LAYER_3(FN,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &trans  &none  &none  &none   &none   &none                                                     &kp C_MEDIA_HOME  &kp C_PLAY    &kp C_PREV    &kp C_NEXT  &kp C_STOP    &kp C_EJECT
+    XXX           XXX           XXX           XXX           XXX           XXX                                                                      XXX           XXX           XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    XXX           XXX           XXX           XXX           XXX           XXX           XXX                                          &trans  &kp PRCNT &kp N7      &kp N8      &kp N9      &kp COLON   &kp K
+    XXX           XXX           XXX           XXX           XXX           XXX           XXX                                          ___           XXX           &kp F7        &kp F8        &kp F9        &kp F10       &kp F13
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-  &trans  &none  &none  &none   &none   &trans          &bootloader                 &bootloader   &kp K_CALC        &kp F4        &kp F5        &kp F6      &kp F11       &kp F14
+    ___           XXX           XXX           XXX           XXX           ___           &bootloader                                  &bootloader   XXX           &kp F4        &kp F5        &kp F6        &kp F11       &kp F14
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-  &trans  &none  &none  &none   &none   &trans          &trans   &trans    &trans   &trans        &kp C_AL_FILES    &kp F1        &kp F2        &kp F3      &kp F12       &kp F15
+    ___           XXX           XXX           XXX           XXX           ___           ___           ___              ___           ___           XXX           &kp F1        &kp F2        &kp F3        &kp F12       &kp F15
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &trans  &none  &trans &trans          &tog FN  &trans   &trans    &trans   &trans        &tog FN                  &kp C_RW      &kp C_FF    &none         &none
+    ___           XXX           ___           ___                         &tog FN       ___           ___              ___           ___           &tog FN                     &kp C_RW      &kp C_FF      XXX           XXX
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 ,&inc_dec_kp LEFT RIGHT)
 
 
-ZMK_LAYER_3(CUR,
+ZMK_LAYER_3(NAV,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &none  &none      &none       &none       &kp DEL     &kp INS                                        &kp INS     &kp DEL    &none       &none       &none       &none
+    XXX           XXX           XXX           XXX           &kp DEL       &kp INS                                                                  &kp INS       &kp DEL       XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none  &sk LSHFT  &kp K_REDO  &kp K_UNDO  &kp BSPC    &kp K_CUT       &none                   &none  &kp K_CUT   &kp K_UNDO &kp UP      &kp K_REDO  &sk LSHFT   &none
+    XXX           &sk LSHFT     &kp K_REDO    &kp K_UNDO    &kp BSPC      &kp K_CUT     XXX                                          XXX           &kp K_CUT     &kp K_UNDO    &kp UP        &kp K_REDO    &sk RSHFT     XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none  &kp LGUI   &kp LALT    &kp LCTRL   &kp LSHFT   &kp K_COPY      &none                   &none  &kp K_COPY  &kp LEFT   &kp DOWN    &kp RIGHT   &kp BSPC    &none
+    XXX           &kp LGUI      &kp LALT      &kp LCTRL     &kp LSHFT     &kp K_COPY    XXX                                          XXX           &kp K_COPY    &kp LEFT      &kp DOWN      &kp RIGHT     &kp BSPC      XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none  &none      &none       &none       &none       &kp K_PASTE     &kp TAB   &none  &none  &none  &kp K_PASTE &kp HOME   &kp PG_UP   &kp PG_DN   &kp END     &none
+    XXX           XXX           XXX           XXX           XXX           &kp K_PASTE   &kp TAB       XXX              XXX           XXX           &kp K_PASTE   &kp HOME      &kp PG_UP     &kp PG_DN     &kp END       XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none  &none      &none       &none                   &tog CUR  &none     &none  &none  &none  &tog CUR         &kp K_FIND  &none       &none       &none
+    XXX           XXX           XXX           XXX                         &tog NAV      XXX           XXX              XXX           XXX           &tog NAV                    &kp K_FIND    XXX           XXX           XXX
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 ,&inc_dec_kp LEFT RIGHT)
 
 
 ZMK_LAYER_3(SYM,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &none     &kp GRAVE &kp LPAR   &kp RPAR   &kp SEMI  &kp COMMA                                         &none   &none      &none        &none     &none     &none
+    XXX           &kp GRAVE     &kp LPAR      &kp RPAR      &kp SEMI      &kp COMMA                                                                XXX           XXX           XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-  &kp EXCL  &kp LBRC  &kp SQT    &kp DQT    &kp RBRC  &kp QMARK  &kp COLON                      &none   &trans  &kp RSHFT  &kp RCTRL    &kp RALT  &kp RGUI  &none
+    &kp EXCL      &kp LBRC      &kp SQT       &kp DQT       &kp RBRC      &kp QMARK     &kp COLON                                    XXX           ___           &kp RSHFT     &kp RCTRL     &kp RALT      &kp RGUI      XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp HASH  &kp CARET &kp EQUAL  &kp UNDER  &kp DLLR  &kp STAR   &kp SEMI                       &none   &trans  &kp BSPC   &kp TAB      &kp SPACE &kp RET   &none
+    &kp HASH      &kp CARET     &kp EQUAL     &kp UNDER     &kp DLLR      &kp STAR      &kp SEMI                                     XXX           ___           &kp BSPC      &kp TAB       &kp SPACE     &kp RET       XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &kp TILDE &kp LT    &kp PIPE   &kp MINUS  &kp GT    &kp FSLH   &kp BSLH    &kp DOT    &none   &none   &trans  &kp DEL    &kp LS(TAB)  &none     &none     &none
+    &kp TILDE     &kp LT        &kp PIPE      &kp MINUS     &kp GT        &kp FSLH      &kp BSLH      &kp DOT          XXX           XXX           ___           &kp DEL       &kp LS(TAB)    XXX          XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      &kp AT    &kp AMPS  &kp LBKT   &kp RBKT             &kp PLUS   &kp PRCNT   &kp STAR   &none   &none   &tog SYM     &trans       &none     &none     &none
+    &kp AT        &kp AMPS      &kp LBKT      &kp RBKT                    &kp PLUS      &kp PRCNT     &kp STAR         XXX           XXX           &tog SYM                    ___           XXX           XXX           XXX
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 ,&inc_dec_kp LEFT RIGHT)
 
 ZMK_LAYER_3(MOU,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-      &none  &none      &none       &none       &none       &none                                     &none      &none        &none        &none     &none     &none
+    XXX           XXX           XXX           XXX           XXX           XXX                                                                      XXX           XXX           XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-  &none  U_WH_L     U_WH_D      U_MS_U      U_WH_U      U_WH_R     &none                 &trans  &none      &kp RSHFT    &kp RCTRL    &kp RALT  &kp RGUI  &none
+    XXX           U_WH_L        U_WH_D        U_MS_U        U_WH_U        U_WH_R        XXX                                          ___           XXX           &kp RSHFT     &kp RCTRL     &kp RALT      &kp RGUI      XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none  &none      U_MS_L      U_MS_D      U_MS_R      &none       &none                 &trans  &none      &kp BSPC     &kp TAB      &kp SPACE &kp RET   &none
+    XXX           XXX           U_MS_L        U_MS_D        U_MS_R        XXX           XXX                                          ___           XXX           &kp BSPC      &kp TAB       &kp SPACE     &kp RET       XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none  &none      &mkp MB4    &mkp MCLK   &mkp MB5    &none       &none   &none   &none &trans  &none      &kp DEL      &kp LS(TAB)  &none     &none     &none
+    XXX           XXX           &mkp MB4      &mkp MCLK     &mkp MB5      XXX           XXX           XXX              XXX           ___           XXX           &kp DEL       &kp LS(TAB)   XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-        &none  &none      &none       &none               &none       &none   &none   &none &none   &tog MOUSE          &trans       &none     &none     &none
+    XXX           XXX           XXX           XXX                         XXX           XXX           XXX              XXX           XXX           &tog MOS                    ___           XXX           XXX           XXX
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 ,&inc_dec_kp LEFT RIGHT)
 
 
 
-ZMK_LAYER_3(MOU,
+ZMK_LAYER_3(SYS,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
-    &bt BT_CLR_ALL  &bt BT_CLR    &none         &none &none  &none                                 &none  &none     &none      &none     &none      &none
+    XXX           XXX           XXX           XXX           XXX           XXX                                                                      XXX           XXX           XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none           &kp C_PWR     &kp C_SLEEP   &none &none  &none    &none                &none   &none  &none     &none      &none     &none      &none
+    XXX           &kp C_PWR     &kp C_SLEEP   XXX           XXX           XXX           XXX                                          XXX           XXX           XXX           XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &none           &kp K_PWR     &kp K_SLEEP   &none &none  &none    &none                &none   &none  &kp RSHFT &kp RCTRL  &kp RALT  &kp RGUI   &none
+    XXX           &kp K_PWR     &kp K_SLEEP   XXX           XXX           XXX           XXX                                          XXX           XXX           &kp RSHFT     &kp RCTRL     &kp RALT      &kp RGUI      XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-      &none           _BT_SEL_KEYS_      &none  &none  &none  &none   &none  &none     &none      &none     &none      &none
+    XXX           &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR    XXX           XXX              XXX           XXX           XXX           XXX           XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-        &none           &none         &none         &none        &none    &none  &none  &none  &none   &tog SYS   &none      &none     &none      &none
+    XXX           XXX           XXX           XXX                         XXX           XXX           XXX              XXX           XXX           &tog SYS                    XXX           XXX           XXX           XXX
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
 ,&inc_dec_kp LEFT RIGHT)
