@@ -7,10 +7,10 @@ manifest:
   projects:
     - name: zmk
       remote: urob
-      revision: 
+      revision: main
       import: app/west.yml
     - name: zmk-helpers
       remote: urob
-      revision: 
+      revision: v2
   self:
     path: config
