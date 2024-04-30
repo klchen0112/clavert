@@ -204,6 +204,31 @@ ZMK_MACRO(win_sleep,
     bindings = <&kp LG(X) &kp U &kp S>;
 )
 
+ZMK_TAP_DANCE(num_dance,
+    tapping-term-ms = <200>;
+    bindings = <&num_word>, <&sl NUM>;  // reverse this for sticky-num on single tap
+)
+
+
+ZMK_TAP_DANCE(bt_0,
+    tapping-term-ms = <200>;
+    bindings = <&bt BT_SEL 0>, <&bt BT_DISC 0>;  // reverse this for sticky-num on single tap
+)
+
+ZMK_TAP_DANCE(bt_1,
+    tapping-term-ms = <200>;
+    bindings = <&bt BT_SEL 1>, <&bt BT_DISC 1>;  // reverse this for sticky-num on single tap
+)
+
+ZMK_TAP_DANCE(bt_2,
+    tapping-term-ms = <200>;
+    bindings = <&bt BT_SEL 2>, <&bt BT_DISC 2>;  // reverse this for sticky-num on single tap
+)
+
+ZMK_TAP_DANCE(bt_3,
+    tapping-term-ms = <200>;
+    bindings = <&bt BT_SEL 3>, <&bt BT_DISC 3>;  // reverse this for sticky-num on single tap
+)
 // misc aliases
 #define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-MOS
 #define DSK_PREV    &hmr LALT LG(LC(LEFT))   // previous desktop
@@ -214,8 +239,6 @@ ZMK_MACRO(win_sleep,
 #define VOL_DOWN    &hmr RSHFT C_VOL_DN
 
 /* Keymap */
-
-ZMK_CONDITIONAL_LAYER(FN NUM, SYS)  // FN + NUM --> SYS
 
 ZMK_LAYER_3(DEF,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
@@ -317,7 +340,7 @@ ZMK_LAYER_3(SYS,
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     XXX           &kp K_PWR     &kp K_SLEEP   XXX           XXX           XXX           XXX                                          XXX           XXX           &kp RSHFT     &kp RCTRL     &kp RALT      &kp RGUI      XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-   &bt BT_CLR_ALL &bt BT_SEL 0  &bt BT_SEL 1  &bt BT_SEL 2  &bt BT_SEL 3  &bt BT_CLR    XXX           XXX              XXX           XXX           XXX           XXX           XXX           XXX           XXX           XXX
+   &bt BT_CLR_ALL &bt_0         &bt_1         &bt_2         &bt_3         &bt BT_CLR    XXX           XXX              XXX           XXX           XXX           XXX           XXX           XXX           XXX           XXX
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
     XXX           XXX           XXX           XXX                         XXX           XXX           XXX              XXX           XXX           &tog SYS                    XXX           XXX           XXX           XXX
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
