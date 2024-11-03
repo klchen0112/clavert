@@ -4,3 +4,7 @@
 /zmk
 /build
 result
+.direnv
+.build
+.firmware
+
