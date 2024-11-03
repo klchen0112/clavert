@@ -14,6 +14,8 @@
 
 #include "zmk-helpers/helper.h"
 
+#include "combos.dtsi"
+#include "leader.dtsi"
 #include "mouse.dtsi"
 #include "clavert_keys.h"
 
