@@ -170,8 +170,6 @@ ZMK_TAP_DANCE(bt_3,
 #define CANCEL      &kp K_CANCEL             // cancel caps-word, num-word and smart-MOS
 #define DSK_PREV    &hmr LALT LG(LC(LEFT))   // previous desktop
 #define DSK_NEXT    &hmr LCTRL LG(LC(RIGHT)) // next     desktop
-#define PIN_WIN     &kp LG(LC(LS(Q)))        // pin window across desktops
-#define PIN_APP     &kp LG(LC(LS(A)))        // pin application across desktops
 #define DSK_MGR     &kp LA(GRAVE)            // desktop manager
 #define VOL_DOWN    &hmr RSHFT C_VOL_DN
 
@@ -181,13 +179,13 @@ ZMK_LAYER_3(DEF,
 //╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮  ╭─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────┬─────────────╮
     &lt SYS GRAVE &kp N1        &kp N2        &kp N3        &kp N4        &kp N5                                                                   &kp N6        &kp N7        &kp N8        &kp N9        &kp N0        &lt SYS EQUAL
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &caps_word    &kp B         &kp Y         &kp O         &kp U         &kp SQT       &kp LBKT                                     &kp RBKT      &kp SEMI      &kp L         &kp D         &kp W         &kp V         &kp Z
+    &kp LBKT      &kp B         &kp Y         &kp O         &kp U         &kp SQT       &kp FSLH                                     &kp BSLH      &kp SEMI      &kp L         &kp D         &kp W         &kp V         &kp RBKT
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &key_repeat    &hml LGUI C   &hml LALT I   &hml LCTRL E  &hml LSHFT A  &kp COMMA    &kp FSLH                                     &kp BSLH      &kp DOT       &hmr RSHFT H  &hmr RCTRL T  &hmr RALT S   &hmr RGUI N   &kp Q
+    &kp COMMA     &hml LGUI C   &hml LALT I   &hml LCTRL E  &hml LSHFT A  &kp Z         &key_repeat                                  XXX           &kp Q         &hmr RSHFT H  &hmr RCTRL T  &hmr RALT S   &hmr RGUI N   &kp DOT
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    &smart_shft   &kp G         &kp X         &kp J         &kp K         &kp MINUS     &lt NAV HOME  &lt FN END      &lt FN PG_UP   &lt MOS PG_DN &kp FSLH      &kp R         &kp M        &kp F         &kp P          &kp RSHFT
+    &smart_shft   &kp G         &kp X         &kp J         &kp K         &kp MINUS     &lt NAV HOME  &lt FN END      &lt FN PG_UP   &lt MOS PG_DN &kp EQUAL     &kp R         &kp M         &kp F         &kp P         &kp RSHFT
 //├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤  ├─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┼─────────────┤
-    NAV_LEFT      NAV_RIGHT     &kp FSLH      &kp BSLH                    &kp TAB       &kp LCTRL     &lt NUM ESC     &lt SYM ENTER  &kp SPACE     &kp BSPC                    &kp LBKT      &kp RBKT      NAV_UP      NAV_DOWN
+    NAV_LEFT      NAV_RIGHT     XXX           XXX                         &kp TAB       &kp LCTRL     &lt NUM ESC     &lt SYM ENTER  &kp SPACE     &kp BSPC                    XXX           XXX            NAV_UP        NAV_DOWN
 //╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯  ╰─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────┴─────────────╯
   ,&inc_dec_kp LEFT RIGHT
 )
