@@ -77,8 +77,8 @@
       },
       "original": {
         "owner": "zmkfirmware",
-        "ref": "v3.5.0+zmk-fixes",
         "repo": "zephyr",
+        "rev": "2ab1279768cc852172074994f73227dbfc58ca54",
         "type": "github"
       }
     },
