@@ -17,3 +17,5 @@ include:
     shield: clavert_engrammer_left
   - board: nice_nano_v2
     shield: clavert_engrammer_right
+  - board: nice_nano_v2
+    shield: settings_reset
