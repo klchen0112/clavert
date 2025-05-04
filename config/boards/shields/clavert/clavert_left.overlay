@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: MIT
  */
 
-#include "clavert_engrammer.dtsi"
+#include "clavert.dtsi"
 
 &kscan0 {
 	col-gpios

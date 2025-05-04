@@ -1,6 +1,6 @@
 file_format: "1"
-id: clavert_engrammer
-name: Clavert_engrammer
+id: clavert
+name: Clavert
 type: shield
 url: https://github.com/klchen0112/clavert
 requires: [pro_micro]
@@ -8,5 +8,5 @@ features:
   - keys
   - encoder
 siblings:
-  - clavert_engrammer_left
-  - clavert_engrammer_right
+  - clavert_left
+  - clavert_right
