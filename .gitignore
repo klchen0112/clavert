@@ -6,7 +6,7 @@
 result
 .direnv
 .build
-.firmware
+firmware
 
 # macOS
 *.DS_Store
