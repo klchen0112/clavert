@@ -28,9 +28,9 @@
               zephyr.pythonEnv
               (zephyr.sdk-0_16.override {targets = ["arm-zephyr-eabi"];})
 
-              pkgs.gcc
               pkgs.cmake
               pkgs.dtc
+              pkgs.gcc
               pkgs.ninja
 
               pkgs.just
@@ -39,13 +39,13 @@
               keymap_drawer
 
               # -- Used by just_recipes and west_commands. Most systems already have them. --
-              pkgs.gawk
-              pkgs.unixtools.column
-              pkgs.coreutils # cp, cut, echo, mkdir, sort, tail, tee, uniq, wc
-              pkgs.diffutils
-              pkgs.findutils # find, xargs
-              pkgs.gnugrep
-              pkgs.gnused
+              # pkgs.gawk
+              # pkgs.unixtools.column
+              # pkgs.coreutils # cp, cut, echo, mkdir, sort, tail, tee, uniq, wc
+              # pkgs.diffutils
+              # pkgs.findutils # find, xargs
+              # pkgs.gnugrep
+              # pkgs.gnused
             ];
 
           shellHook = ''
